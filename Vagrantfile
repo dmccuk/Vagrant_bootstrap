@@ -2,12 +2,10 @@ Vagrant.configure("2") do |config|
 
   # Base Vagrant Box
   config.vm.box = "chef/centos-6.5"
-
-  # Networking
-  config.vm.hostname = "vagrant.den.com"
-  config.vm.network :public_network, :bridge => "wlan0"
-#  config.vm.network = "public_network", :bridge => 'wlan0'
   config.vm.provision :shell, :path => "bootstrap.sh"
+  # Networking
+#  config.vm.hostname = "vagrant.den.com"
+  config.vm.network "public_network", ip: "192.168.43.81", bridge => "wlan0"
 
   # Puppet server configuration
 #  config.vm.provision :puppet_server do |puppet| 
